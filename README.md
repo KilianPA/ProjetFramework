@@ -1,68 +1,56 @@
-Symfony Standard Edition
-========================
+Sujet 2 : La galerie photo
+Le site permet au utilisateur de gérer leur galerie de photo. Il a le choix de l'ordre et des photos à publier sur leur galerie public.
+Cas d'utilisation
 
-Welcome to the Symfony Standard Edition - a fully-functional Symfony
-application that you can use as the skeleton for your new applications.
+Un internaute se connecte au site
 
-For details on how to download and get started with Symfony, see the
-[Installation][1] chapter of the Symfony Documentation.
+Une galerie est affichée choisi aléatoirement parmi les utilisateurs ayant publiés des photos.
+Les autres galeries sont listées à gauches, identifiées par le pseudo de l'utilisateur.
+Le formulaire d'authentification en haut à droit e-mail + pass
+Un internaute demande un compte
 
-What's inside?
---------------
+Une boîte de dialogue apparaît avec le formulaire demandant les infos suivantes :
+le e-mail
+le pseudo
+age
+capcha
+Tant que le formulaire n'est pas correctement rempli, la validation boucle sur le même formulaire avec les infos sur les erreurs
+Après la validation de son inscription, L'internaute reçoit un mot de passe généré lui permettant de se connecter à son compte .
+Après la validation de son inscription, il est redirigé sur la page consultée avant l'accès au formulaire
+Un utilisateur accède à son compte
 
-The Symfony Standard Edition is configured with the following defaults:
+Contrainte : 3 échecs compte bloqué. (Faire le décompte des échecs et prévenir avant blocage)
+Affichage des photos dans un damier 4 colonnes 3 lignes des photos
+En haut de page bouton/href ouvrant une boîte pour l'ajout
+Scroll horizontal du damier pour naviguer dans les photo
+Sous chaque photo 2 cases + date & heure de l'ajout + taille :
+une avec le numéro d'ordre de la photo dans la galerie public
+un bouton pour supprimer la photo
+Un utilisateur ajoute une photo
 
-  * An AppBundle you can use to start coding;
+L'utilisateur authentifier ouvre la boîte de dialogue, qui comprend :
+un champs upload pour la photo
+un bouton valider
+Après validation via le bouton, le serveur effectue les vérifications suivantes sur la photo
+c'est bien une image jpeg ou png
+elle ne fait pas plus de 5Mo
+Si oui la photo est ajoutée au damier sinon retour formulaire avec info sur l'erreur
+Un utilisateur publie une photo
 
-  * Twig as the only configured template engine;
+L'utilisateur publie une photo en indiquant un numéro d'ordre à la photo.
+Si il n'y a pas de numéro d'ordre la photo n'est pas publier dans la galerie.
+Un utilisateur supprime une photo
 
-  * Doctrine ORM/DBAL;
+Via le bouton suppression sous la photo
+la suppression se fait après une confirmation
+Un utilisateur se déconnecte de son compte
 
-  * Swiftmailer;
+En haut à droite déconnexion, il revient à la « home page » public
+L'administrateur accède à son compte
 
-  * Annotations enabled for everything.
+Il a la liste des utilisateurs, il peut :
+supprimer un compte utilisateur (cela inclut toutes les photos)
+débloquer un compte
+Un administrateur se déconnecte de son compte
 
-It comes pre-configured with the following bundles:
-
-  * **FrameworkBundle** - The core Symfony framework bundle
-
-  * [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
-    template and routing annotation capability
-
-  * [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
-
-  * [**TwigBundle**][8] - Adds support for the Twig templating engine
-
-  * [**SecurityBundle**][9] - Adds security by integrating Symfony's security
-    component
-
-  * [**SwiftmailerBundle**][10] - Adds support for Swiftmailer, a library for
-    sending emails
-
-  * [**MonologBundle**][11] - Adds support for Monolog, a logging library
-
-  * **WebProfilerBundle** (in dev/test env) - Adds profiling functionality and
-    the web debug toolbar
-
-  * **SensioDistributionBundle** (in dev/test env) - Adds functionality for
-    configuring and working with Symfony distributions
-
-  * [**SensioGeneratorBundle**][13] (in dev/test env) - Adds code generation
-    capabilities
-
-  * **DebugBundle** (in dev/test env) - Adds Debug and VarDumper component
-    integration
-
-All libraries and bundles included in the Symfony Standard Edition are
-released under the MIT or BSD license.
-
-Enjoy!
-
-[1]:  https://symfony.com/doc/3.0/book/installation.html
-[6]:  https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
-[7]:  https://symfony.com/doc/3.0/book/doctrine.html
-[8]:  https://symfony.com/doc/3.0/book/templating.html
-[9]:  https://symfony.com/doc/3.0/book/security.html
-[10]: https://symfony.com/doc/3.0/cookbook/email.html
-[11]: https://symfony.com/doc/3.0/cookbook/logging/monolog.html
-[13]: https://symfony.com/doc/3.0/bundles/SensioGeneratorBundle/index.html
+En haut à droite déconnexion, il revient à la « home page » public

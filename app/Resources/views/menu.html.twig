@@ -1,0 +1,112 @@
+{% extends "base.html.twig" %}
+
+     {% block body %}
+             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+                 <div class="partie_menu">
+                     <div class="container-fluid">
+                         <div class="row">
+                             <div class="col-md-12 container_menu text-right">
+                                 <div class="col-md-7">
+
+                                 </div>
+                                 <div class="col-md-5 text-right">
+                                     <div class="col-md-2">
+                                        {#Bonjour {{ app.user.username }}#}
+                                     </div>
+                                     <div class="col-md-6 ajouter_photo_menu">
+                                         <h4> <i class="fa fa-picture-o" aria-hidden="true"></i> Ajouter une photo </h4>
+                                     </div>
+                                     <div class="col-md-2 text-center">
+                                         <div class="menu_trigger">
+                                             <button class="btn btn-secondary button-menu text-center dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                 <i class="fa fa-user" aria-hidden="true"></i>
+                                             </button>
+                                             <div class="menu_compte dropdown-menu dropdown-menu-right">
+                                                 <ul class="text-center">
+                                                     <li class="dropdown-item menu-li dropdown-item" href="#">Ma galerie</li>
+                                                     <li class="dropdown-item menu-li dropdown-item" href="{{ path('fos_user_security_logout') }}">Se deconnecter</li>
+                                                 </ul>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+
+                 <div class="modal fade" id="AddPhotoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                     <div class="modal-dialog" role="document">
+                         <div class="modal-content">
+                             <div class="modal-header">
+                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                     <span aria-hidden="true">&times;</span>
+                                 </button>
+                                 <h4> <i class="fa fa-picture-o" aria-hidden="true"></i> Ajouter une photo </h4>
+                             </div>
+                             <div class="modal-body">
+                                 <div class="col-md-12 center-block">
+                                     <div class="col-md-12">
+                                         {{ render(url('addphoto')) }}
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+
+
+             {% else %}
+
+                 <div class="partie_menu">
+                     <div class="container-fluid">
+                         <div class="row">
+                             <div class="col-md-12 container_menu">
+                                 <div class="col-md-6">
+
+                                 </div>
+                                 <div class="col-md-6 text-right">
+                                     <div class="col-md-9">
+
+                                         {#{% render "FOSUserBundle:Security:LoginBis" %}#}
+                                         {{ render(controller('AppBundle:Security:login')) }}
+                                     </div>
+                                     <div class="col-md-3">
+                                         <h4 class="register_menu"> Créer un compte </h4>
+                                     </div>
+                                 </div>
+
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+
+
+                 {#MODAL REGISTER #}
+
+                 <div class="modal fade" id="RegisterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                 <div class="modal-dialog" role="document">
+                     <div class="modal-content">
+                         <div class="modal-header">
+                             <i class="fa fa-user" aria-hidden="true"></i>
+                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                 <span aria-hidden="true">&times;</span>
+                             </button>
+                         </div>
+                         <div class="modal-body">
+                             <div class="col-md-11 center-block">
+                                 <h2 class="modal-title text-center" id="exampleModalLabel">S'inscire</h2>
+                                 <div class="col-md-12">
+                                     {{ render(controller('AppBundle:Registration:register')) }}
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+
+
+
+             {% endif %}
+     {% endblock %}

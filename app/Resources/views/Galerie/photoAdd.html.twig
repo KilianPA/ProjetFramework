@@ -1,0 +1,31 @@
+
+    <form action="{{ path('addphoto') }}" method="post" id="formAddPhoto" {{ form_start(form) }}
+
+    {%- block form_rows -%}
+
+        <div class="col-md-12 input-form-photo"> {{ form_row(form.nom, {'attr': {'class': 'form-control nom_photo_input', 'placeholder' : 'Nom de la photo'}} ) }} </div>
+        <div class="col-md-6 input-form-photo">
+                <label for="appbundle_photo_file" class="label-file">Choisir une image</label>
+                    {{ form_row(form.file, {'attr': {'class': 'upload_photo'}} ) }}
+        </div>
+
+        <div class="col-md-6">
+            <img id="blah" class="image_preview" src="#" alt="your image" />
+        </div>
+
+
+    {%- endblock form_rows -%}
+
+
+    {{ form_widget(form) }}
+
+    <div class="col-md-12 upload_photo_div ">
+        <div class="col-md-8 response_photo " role="alert">
+
+        </div>
+        <div class="col-md-4 text-right">
+            <button type="submit" class="button_validate">Upload</button>
+        </div>
+    </div>
+    </form>
+

@@ -1,0 +1,207 @@
+.container_menu {
+
+    padding:1%;
+    background-color: #fafafa;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.form-control,.alert-danger {
+
+    font-size:12px;
+
+}
+
+.container_menu,.menu_compte {
+
+
+
+}
+
+.btn_menu {
+
+    /*background: #ff7e5f;  !* fallback for old browsers *!*/
+    /*background: -webkit-linear-gradient(to right, #feb47b, #ff7e5f);  !* Chrome 10-25, Safari 5.1-6 *!*/
+    /*background: linear-gradient(to right, #feb47b, #ff7e5f); !* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ *!*/
+    border-radius:6px;
+    border:solid 1px #d8d8d8;
+    padding:5%;
+}
+
+.register_menu {
+
+    color: #ff7e5f;
+    font-size:16px;
+
+}
+
+.button-menu {
+    padding:0;
+    background-color:transparent;
+    color:#262626;
+    font-size:25px;
+
+}
+
+.modal-body {
+
+    display:flex;
+
+}
+
+ul {
+    padding:0;
+    list-style-type: none;
+
+}
+
+.popover {
+
+    color: #b20000;
+
+}
+
+.logo-input-menu {
+
+    color: #ff7e5f;
+
+}
+
+.menu-input-col {
+
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+
+.input_login_button {
+
+
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-weight: bold;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid #c3c3c3;
+    border-radius: 4px;
+    font-size:14px;
+    color: #656565;
+    background-color: transparent;
+
+}
+
+.button_validate {
+
+
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-weight: bold;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid #ff7e5f;
+    border-radius: 4px;
+    font-size:18px;
+    color: rgba(255, 126, 95, 0.89);
+    background-color: transparent;
+
+}
+
+.fa-user,.fa-picture-o {
+
+    font-size: 25px;
+    color: #ff7e5f;
+    /*padding-left: 15px;*/
+
+}
+
+.image_addPhoto_menu {
+
+
+}
+
+.menu-li {
+    padding:5%;
+    font-size:15px;
+    border-bottom: solid 1.5px #f5f5f5;
+}
+
+.menu_compte {
+
+    left: -120px;
+    display:none;
+
+}
+
+#appbundle_photo_file {
+
+  display: none;
+
+}
+
+.label-file {
+
+    border: solid #e6e6e6 1px;
+    padding: 3%;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #5f5f5f;
+    font-size: 15px;
+    background-color: rgba(255, 255, 255, 0.7);
+
+}
+
+.input-form-photo {
+
+    margin-bottom: 5%;
+}
+
+.upload_photo_div {
+    padding-top:5%;
+    padding-left:0;
+    padding-right:0;
+    border-top: solid 1px #ececec;
+    margin-top:5%;
+
+}
+
+.nom_photo_input {
+
+    font-size:15px;
+
+}
+
+.image_preview {
+    display: none;
+    margin:auto;
+    width:100%;
+    border-radius: 5px;
+    border: solid 1px #f1f1f1;
+    box-shadow: h-pos v-pos (blur) (spread) (color) (inset);
+
+}
+
+.response_photo {
+
+    font-size:18px;
+
+}

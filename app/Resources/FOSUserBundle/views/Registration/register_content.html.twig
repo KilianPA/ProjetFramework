@@ -1,0 +1,15 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+{%- block form_rows -%}
+
+<div class="col-md-12"> {{ form_row(form.username, {'attr': {'class': 'form-control'}} ) }} </div>
+<div class="col-md-12"> {{ form_row(form.email, {'attr': {'class': 'form-control'}} ) }} </div>
+{#<div class="col-md-12"> {{ form_row(form.plainPassword.first, {'attr': {'class': 'form-control'}} ) }} </div>#}
+{#<div class="col-md-12"> {{ form_row(form.plainPassword.second, {'attr': {'class': 'form-control'}} ) }} </div>#}
+<div class="col-md-12"> {{ form_row(form.captcha ) }} </div>
+<div class="col-md-12 text-center"> <button type="submit" class="button_register" >S'inscrire</button> </div>
+{%- endblock form_rows -%}
+{{ form_end(form) }}
+
+

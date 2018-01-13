@@ -5,9 +5,22 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="{{ asset('/css/css_bootstrap/bootstrap.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/font-awesome-4.7.0/css/font-awesome.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/main/main.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/menu/menu.css') }}" />
+        <script src="{{ asset('https://code.jquery.com/jquery-3.2.1.min.js') }}"></script>
+
+
     </head>
     <body>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
+        <script src="{{ asset('js/menu/menu.js') }}" ></script>
+        <script src="{{ asset('js/js/popper.min.js') }}" ></script>
+        <script src="{{ asset('js/js/bootstrap.bundle.js') }}" ></script>
+        <script src="{{ asset('js/js_bootstrap_2/bootstrap.js') }}" ></script>
+
+
     </body>
 </html>
