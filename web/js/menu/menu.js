@@ -8,9 +8,20 @@ $(document).ready(function () {
         $('#AddPhotoModal').modal('show');
     });
 
-    $( ".fos_user_registration_form" ).click(function( event ) {
+    $('.fos_user_registration_form').submit(function(event) {
         event.preventDefault();
-        console.log('STOP')
+        var formData = $('.fos_user_registration_form').serialize();
+
+        $.ajax({
+            type: 'POST',
+            url: $('.fos_user_registration_form').attr('action'),
+            data: new FormData($('.fos_user_registration_form')[0]),
+            processData: false,  contentType: false,  cache: false,
+            success: function (response) {
+                console.log(response);
+            }
+        });
+
     });
 
 });

@@ -61,11 +61,13 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: "%mailer_transport%"
-    host:      "%mailer_host%"
-    username:  "%mailer_user%"
-    password:  "%mailer_password%"
-    spool:     { type: memory }
+    transport:  "%mail_transport%"
+    encryption: "%mail_encryption%"
+    auth_mode:  "%mail_auth_mode%"
+    host:       "%mail_host%"
+    username:   "%mail_user%"
+    password:   "%mail_password%"
+    spool:      { type: memory }
 
 #Fosuserbundle Configuration
 fos_user:

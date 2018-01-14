@@ -1,6 +1,6 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_form'}}) }}
 {%- block form_rows -%}
 
 <div class="col-md-12"> {{ form_row(form.username, {'attr': {'class': 'form-control'}} ) }} </div>

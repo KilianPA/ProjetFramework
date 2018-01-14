@@ -23,6 +23,7 @@ class RegistrationListener
 
         // only act on some "Product" entity
         if ($entity instanceof User) {
+
             $galerie = new Galerie();
             $galerie->setName('Ma Galerie');
             $galerie->setUtilisateur($entity);

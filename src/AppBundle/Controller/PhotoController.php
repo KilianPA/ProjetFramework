@@ -45,6 +45,10 @@ class PhotoController extends Controller
 
                 $em->persist($photo);
                 $em->flush();
+
+
+
+
                 return new Response('Photo bien uploadé');
             }
             else {
