@@ -102,6 +102,40 @@ class Photo
     private $nom;
 
     /**
+     * @return int
+     */
+    public function getOrdrePhoto()
+    {
+        return $this->ordrePhoto;
+    }
+
+    /**
+     * @param int $ordrePhoto
+     */
+    public function setOrdrePhoto($ordrePhoto)
+    {
+        $this->ordrePhoto = $ordrePhoto;
+    }
+
+    /**
+     * @return int
+     */
+
+
+    /**
+     * @return int
+     */
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ordrePhoto", type="integer", nullable=true)
+     */
+
+    private $ordrePhoto;
+
+    /**
      * @var date
      *
      * @ORM\Column(name="dateUpload", type="date", nullable=true)
@@ -255,7 +289,9 @@ class Photo
      *
      * @return Photo
      */
-    public function setGalerie(\AppBundle\Entity\Galerie $galerie = null)
+
+
+    public function setGalerie(\AppBundle\Entity\Galerie $galerie)
     {
         $this->galerie = $galerie;
 

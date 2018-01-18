@@ -1,5 +1,6 @@
 $('#formAddPhoto').submit(function(event) {
-
+    console.log("test");
+    $('.container_loader').css('display', 'block');
     $('.response_photo').removeClass('alert alert-sucess');
     $('.response_photo').removeClass('alert alert-danger');
     event.preventDefault();
@@ -11,7 +12,7 @@ $('#formAddPhoto').submit(function(event) {
         data: new FormData($('#formAddPhoto')[0]),
         processData: false,  contentType: false,  cache: false,
         success: function (response) {
-
+            $('.container_loader').css('display', 'none');
 
             if (response.indexOf("ERROR") >= 0) {
 
@@ -26,6 +27,19 @@ $('#formAddPhoto').submit(function(event) {
                 $('.response_photo').css('display', 'block');
                 $('.response_photo').html(response);
                 $('.response_photo').addClass('alert alert-success');
+
+
+                setTimeout(function(){
+
+                    $('#appbundle_photo_nom').val('');
+                    $('#appbundle_photo_file').val('');
+                    $('#blah').attr('src', ' ');
+                    $('.response_photo ').css('display', 'none');
+
+                }, 10000);
+
+
+
 
 
             }

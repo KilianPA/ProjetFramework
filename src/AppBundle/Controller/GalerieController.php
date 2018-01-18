@@ -3,62 +3,99 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\AppBundle;
 use AppBundle\Entity\Galerie;
+use AppBundle\Repository\GalerieRepository;
+use AppBundle\Entity\Photo;
 use AppBundle\Form\GalerieType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Serializer\Serializer;
 
 class GalerieController extends Controller
 {
 
-    /**
-     *
-     * @Route("/addgalerie" , name="addGalerie")
-     *
-     * @return \Symfony\Component\HttpFoundation\Response
-     *
-     */
 
-    public function addAction(Request $request)
+
+    public function choosePhotoAction(Request $request)
     {
-//    On crée la photo
-        $galerie = new Galerie();
-        $user = $this->getUser();
+        if($request->request->get('array_photo')){
 
-//        On recupère le formulaire
+            $id_photo = $request->request->get('array_photo');
+            $arrData = [];
 
-        $form = $this->createForm(GalerieType::class, $galerie);
+            foreach ($id_photo as $value){
 
+                $photo = $this->getDoctrine()->getRepository("AppBundle:Photo")->findBy(array('id' => $value));
+                array_push($arrData, $photo);
+            }
 
-        $form->handleRequest($request);
+            if (!$arrData){
 
-        //si le formulaire à été soumis
+                return new Response('Pas de photo choisies');
 
-        if($form->isSubmitted()){
-            $galerie->setUtilisateur($user);
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($galerie);
-            $em->flush();
+            } else {
 
-            return new Response('Galerie Ajoutée (c\'est faux mais l\idée est là)');
+                return $this->render('Galerie/photoChoose.html.twig', array('photos' => $arrData));
+
+            }
+
 
 
         }
 
-
-        $formView = $form->createView();
-
-//        On rend la vue
-
-        return $this->render('Galerie\galerieAdd.html.twig' , array(
-
-            'form'=>$formView
-
-        ));
-
+        return new Response('');
     }
+
+    public function addPhotoToGalerieAction(Request $request)
+    {
+        if($request->request->get('array_photo')){
+
+            $id_photo = $request->request->get('array_photo');
+            $id_galerie = $request->request->get('idgalerie');
+            $arrData = [];
+
+            $em = $this->getDoctrine()->getManager();
+            $galerie = $em->getRepository(Galerie::class)->find($id_galerie);
+
+            if (!$galerie) {
+                return new Response('Erreur : Pas de galerie trouvée');
+            }
+
+            foreach ($id_photo as $value){
+
+                $photo = $em->getRepository(Photo::class)->find($value['id_photo']);
+
+                if (!$photo) {
+
+                    return new Response('Erreur : Pas de photo trouvée');
+
+                } else {
+
+                    $photo->setGalerie($galerie);
+                    $photo->setOrdrePhoto($value['order']);
+                    $em->flush();
+                }
+
+//
+//
+//
+//
+//                array_push($arrData, $value['id_photo']);
+//                array_push($arrData, $value['order']);
+            }
+
+            return new Response('OK');
+
+        }
+
+        return new Response('');
+    }
+
+
 
 }

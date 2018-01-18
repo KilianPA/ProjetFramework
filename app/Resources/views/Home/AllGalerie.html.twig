@@ -1,0 +1,23 @@
+
+
+    {% for galerie in galeries %}
+
+        {% if galerie.name == 'null' %}
+
+        {% elseif galerie.photo is empty %}
+
+
+        {% else %}
+            <div class="col-md-12 container_galerie_home">
+                <div class="col-md-12">
+                <h4> "{{  galerie.name }}" de {{  galerie.utilisateur.username }} </h4>
+                    <hr class="ligne_home">
+                </div>
+            {% for phot in galerie.photo %}
+                <div class="col-md-3 container_image_home">
+                <img src="uploads/photo/{{ phot.path }}" class="img-responsive image_photo_home">
+                </div>
+            {% endfor %}
+            </div>
+        {% endif %}
+    {% endfor %}

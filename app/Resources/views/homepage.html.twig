@@ -6,32 +6,26 @@
 
          {% include "menu.html.twig" %}
 
-         {#{{ render(controller('AppBundle:Photo:add')) }}#}
-
-
-
          {% else %}
 
              {% include "menu.html.twig" %}
 
-            <div class="partie_content_bottom">
-                <div class="container-fluid container_bottom_homepage">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <img class="img-responsive image_bottom_homepage" src="{{ asset('/img/home/image_bottom.png') }}">
-                        </div>
-                        <div class="col-md-6">
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
      {% endif %}
 
+     <div class="partie_content_bottom">
+         <div class="container container_bottom_homepage">
+             <div class="row">
+                 <div class="col-md-2 container_all_galerie">
+                     {{ render(url('showallgalerie')) }}
+                 </div>
+                 <div class="col-md-1">
 
-     <script src="{{ asset('js/home/addphoto.js') }}" ></script>
+                 </div>
+                 <div class="col-md-9">
+                     {{ render(url('ShowRandomGalerie')) }}
+                 </div>
+             </div>
+         </div>
+     </div>
 
  {% endblock %}
- 

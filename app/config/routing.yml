@@ -13,4 +13,36 @@ addphoto:
     path:      /addphoto
     defaults:  { _controller: AppBundle:Photo:add }
 
+showphoto:
+    path:      /showphoto
+    defaults:  { _controller: AppBundle:Photo:showPhoto }
+
+showgalerie:
+    path:      /showgalerie
+    defaults:  { _controller: AppBundle:Photo:showGalerie }
+
+choosePhoto:
+    path:      /choosePhoto
+    defaults:  { _controller: AppBundle:Galerie:choosePhoto }
+
+addPhotoToGalerie:
+    path:      /addPhotoToGalerie
+    defaults:  { _controller: AppBundle:Galerie:addPhotoToGalerie }
+
+DeletePhotoFromGalerie:
+    path:      /DeletePhotoFromGalerie
+    defaults:  { _controller: AppBundle:Photo:DeletePhotoFromGalerie }
+
+DeletePhoto:
+    path:      /DeletePhoto
+    defaults:  { _controller: AppBundle:Photo:DeletePhoto }
+
+showallgalerie:
+    path:      /ShowAllGalerie
+    defaults:  { _controller: AppBundle:Home:ShowAllGalerie }
+
+ShowRandomGalerie:
+    path:      /ShowRandomGalerie
+    defaults:  { _controller: AppBundle:Home:ShowRandomGalerie }
+
 

@@ -1,0 +1,23 @@
+
+{% if photos is defined %}
+    <div class="col-md-12 container_grid_galerie" idgalerie="{{ galeries[0].id }}">
+        <h2>Ma Galerie</h2>
+        {% for photo in photos %}
+            <div class="col-md-3 photo_galerie" photoid="{{ photo.id }}">
+                <div class="roundordre text-center center-block">
+                    {{ photo.ordrePhoto }}
+                </div>
+
+                <div class="col-md-12 photo_grid_each">
+                    <i class="fa fa-times-circle delete_click_photo" aria-hidden="true" photoid="{{ photo.id }}"></i>
+                    <img src="uploads/photo/{{ photo.path }}" class="img-responsive image_photo_grid">
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="col-md-12 container_grid_galerie" idgalerie="{{ galeries[0].id }}">
+        <h2>Votre galerie est vide</h2>
+    </div>
+{% endif %}

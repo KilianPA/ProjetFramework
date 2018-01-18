@@ -3,11 +3,13 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Entity\Galerie;
 use AppBundle\Entity\Photo;
 use AppBundle\Form\PhotoType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -31,7 +33,7 @@ class PhotoController extends Controller
 //        On recupère le formulaire
 
         $form = $this->createForm(PhotoType::class, $photo);
-
+        $galerie = $this->getDoctrine()->getRepository("AppBundle:Galerie")->find(0);
 
         $form->handleRequest($request);
 
@@ -42,6 +44,7 @@ class PhotoController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $photo->upload();
                 $photo->setPhotoUser($this->getUser());
+                $photo->setGalerie($galerie);
 
                 $em->persist($photo);
                 $em->flush();
@@ -69,4 +72,90 @@ class PhotoController extends Controller
 
         ));
     }
+
+
+    public function showPhotoAction () {
+
+        $user = $this->getUser();
+        $photo = $this->getDoctrine()->getRepository("AppBundle:Photo")->findBy(array('photoUser' => $user, 'galerie' => array(0,null) ));
+
+        if (!$photo) {
+            return new Response('Aucune photo');
+        }
+
+        return $this->render('Galerie/gridPhoto.html.twig', array('photos' => $photo));
+
+    }
+
+    public function showGalerieAction() {
+
+        $user = $this->getUser();
+        $galerie = $this->getDoctrine()->getRepository("AppBundle:Galerie")->findBy(array('utilisateur' => $user));
+
+
+        if (!$galerie) {
+            return new Response('Aucune galerie trouvée');
+        }
+
+        $photo = $this->getDoctrine()->getRepository("AppBundle:Photo")->findBy(array('galerie' => $galerie), array('ordrePhoto' => 'asc'));
+
+
+        if (!$photo) {
+            return $this->render('Galerie/gridGalerie.html.twig', array('galeries' => $galerie));
+        }
+
+        return $this->render('Galerie/gridGalerie.html.twig', array('photos' => $photo, 'galeries' => $galerie));
+
+    }
+
+    public function DeletePhotoFromGalerieAction(Request $request) {
+
+        if($request->request->get('id_photo')){
+
+            $idPhoto = $request->request->get('id_photo');
+            $em = $this->getDoctrine()->getManager();
+
+            $galerie = $this->getDoctrine()->getRepository("AppBundle:Galerie")->find(0);
+
+            $photo = $this->getDoctrine()->getRepository("AppBundle:Photo")->find($idPhoto);
+            $photo->setGalerie($galerie);
+            $em->flush();
+
+            return new Response('Photo bien supprimée de la galerie');
+
+        }
+
+
+    }
+
+    public function DeletePhotoAction(Request $request) {
+
+        if($request->request->get('id_photo')){
+
+            $idPhoto = $request->request->get('id_photo');
+            $em = $this->getDoctrine()->getManager();
+            $photo = $this->getDoctrine()->getRepository("AppBundle:Photo")->find($idPhoto);
+
+            if(!$photo) {
+
+                return new Response('Erreur');
+
+            }
+
+
+
+
+            $em->remove($photo);
+            $em->flush();
+
+            return new Response('Photo bien supprimée');
+
+        }
+
+
+    }
+
+
+
 }
+

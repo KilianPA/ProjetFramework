@@ -1,7 +1,13 @@
-{% extends "base.html.twig" %}
+{#{% extends "base.html.twig" %}#}
 
      {% block body %}
              {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+                 <div class="container_loader text-center">
+                     <div class="loader"></div>
+                     <h2>Chargement..</h2>
+                 </div>
+
 
                  <div class="partie_menu">
                      <div class="container-fluid">
@@ -11,11 +17,11 @@
 
                                  </div>
                                  <div class="col-md-5 text-right">
-                                     <div class="col-md-2">
-                                        {#Bonjour {{ app.user.username }}#}
-                                     </div>
                                      <div class="col-md-6 ajouter_photo_menu">
                                          <h4> <i class="fa fa-picture-o" aria-hidden="true"></i> Ajouter une photo </h4>
+                                     </div>
+                                     <div class="col-md-4 show_photo_menu">
+                                         <h4> <i class="fa fa-picture-o" aria-hidden="true"></i> Voir mes photo </h4>
                                      </div>
                                      <div class="col-md-2 text-center">
                                          <div class="menu_trigger">
@@ -25,7 +31,7 @@
                                              <div class="menu_compte dropdown-menu dropdown-menu-right">
                                                  <ul class="text-center">
                                                      <li class="dropdown-item menu-li dropdown-item" href="#">Ma galerie</li>
-                                                     <li class="dropdown-item menu-li dropdown-item" href="{{ path('fos_user_security_logout') }}">Se deconnecter</li>
+                                                     <a  href="{{ path('fos_user_security_logout') }}"> <li class="dropdown-item menu-li dropdown-item">Se deconnecter</li></a>
                                                  </ul>
                                              </div>
                                          </div>
@@ -51,6 +57,79 @@
                                          {{ render(url('addphoto')) }}
                                      </div>
                                  </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+
+                 {#<div class="modal fade" id="ShowPhotoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">#}
+                     {#<div class="modal-dialog" role="document">#}
+                         {#<div class="modal-content ">#}
+                             {#<div class="modal-header">#}
+                                 {#<button type="button" class="close" data-dismiss="modal" aria-label="Close">#}
+                                     {#<span aria-hidden="true">&times;</span>#}
+                                 {#</button>#}
+                                 {#<h4> <i class="fa fa-picture-o" aria-hidden="true"></i>Mes photos </h4>#}
+                             {#</div>#}
+                             {#<div class="modal-body">#}
+                                 {#<div class="col-md-12 center-block">#}
+                                     {#<div class="col-md-12 container_grid_photo">#}
+                                         {#{{ render(url('showphoto')) }}#}
+                                         {#{{ photo }}#}
+                                     {#</div>#}
+                                 {#</div>#}
+                             {#</div>#}
+                         {#</div>#}
+                     {#</div>#}
+                 {#</div>#}
+
+
+                 <div class="modal fade bd-example-modal-lg" id="ShowPhotoModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                     <div class="modal-dialog modal-lg">
+                         <div class="modal-content">
+                             <div class="modal-content ">
+                                 <div class="modal-header">
+                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                         <span aria-hidden="true">&times;</span>
+                                     </button>
+                                     <h4> <i class="fa fa-picture-o" aria-hidden="true"></i>Mes photos </h4>
+                                 </div>
+                                 <div class="modal-body">
+                                     <div class="col-md-12 center-block">
+                                         <div class="col-md-12 container_photos">
+                                             {{ render(url('showphoto')) }}
+                                         </div>
+
+                                         <div class="show_photo2">
+                                             {{ render(url('choosePhoto')) }}
+                                         </div>
+                                         <div class="col-md-12">
+                                             <div class="col-md-8">
+
+                                             </div>
+                                             <div class="col-md-4">
+                                             <button class="button_select_photo_galerie">Selectionner les photos</button>
+                                             <button class="button_add_photo_galerie">Ajouter à la galerie</button>
+                                             </div>
+                                         </div>
+                                             {{ render(url('showgalerie')) }}
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+
+
+                 <div class="modal fade " id="ShowDeleteModal">
+                     <div class="modal-dialog" role="document">
+                         <div class="modal-content">
+                             <div class="modal-body">
+                                 <p>Êtes-vous sûr de vouloir supprimer cette photo ?</p>
+                             </div>
+                             <div class="modal-footer">
+                                 <button type="button" class="btn btn-danger delete_photo_modal_button">Supprimer</button>
+                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
                              </div>
                          </div>
                      </div>
@@ -109,4 +188,5 @@
 
 
              {% endif %}
+
      {% endblock %}

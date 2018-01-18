@@ -24,7 +24,7 @@ class Galerie
 
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Photo", mappedBy="galerie")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Photo", mappedBy="galerie", orphanRemoval=true, cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=true)
      */
 
@@ -59,6 +59,8 @@ class Galerie
     {
         return $this->id;
     }
+
+
 
     /**
      * Set name
@@ -148,4 +150,9 @@ class Galerie
     {
         return $this->utilisateur;
     }
+
+
+
+
+
 }

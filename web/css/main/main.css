@@ -60,3 +60,45 @@ body {
     width:80%;
 
 }
+
+.image_photo_home {
+
+    width: 80%;
+    border-radius: 5px;
+
+}
+
+.container_all_galerie {
+
+    padding: 2%;
+    border-radius: 5px;
+    background-color: #fafafa;
+    border: solid 1px #c3c3c3;
+    box-shadow: 3px 4px 16px 0px rgba(58, 58, 58, 0.42);
+
+}
+
+.container_galerie_home {
+
+    border: solid 1px #dcd7d7;
+    padding: 2%;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    margin-bottom: 2%;
+}
+
+.ligne_home {
+
+    width: 60%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #e4e4e4;
+
+}
+
+.container_image_home {
+    padding-left:0;
+    padding-right:5px;
+
+}

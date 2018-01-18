@@ -1,0 +1,12 @@
+
+<div class="col-md-12 container_galerie_home">
+    <div class="col-md-12">
+        <h4> "{{  galeries.name }}" de {{  galeries.utilisateur.username }} </h4>
+        <hr class="ligne_home">
+    </div>
+    {% for photo in photos %}
+        <div class="col-md-3 container_image_home">
+            <img src="uploads/photo/{{ photo.path }}" class="img-responsive image_photo_home">
+        </div>
+    {% endfor %}
+</div>
