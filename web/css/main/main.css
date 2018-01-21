@@ -65,6 +65,7 @@ body {
 
     width: 80%;
     border-radius: 5px;
+    box-shadow: 3px 3px 8px 0px rgba(58, 58, 58, 0.12);
 
 }
 
@@ -84,7 +85,7 @@ body {
     padding: 2%;
     background-color: #f5f5f5;
     border-radius: 5px;
-    margin-bottom: 2%;
+    margin-bottom: 10%;
 }
 
 .ligne_home {
@@ -100,5 +101,80 @@ body {
 .container_image_home {
     padding-left:0;
     padding-right:5px;
+
+}
+
+.username_home {
+
+    color:#feb47b;
+
+}
+
+.container_user_all {
+
+    margin-top:5%;
+    margin-bottom:5%;
+    background-color: #ffffff;
+    -webkit-box-shadow: 0px 5px 26px -5px rgba(0,0,0,0.14);
+    -moz-box-shadow: 0px 5px 26px -5px rgba(0,0,0,0.14);
+    box-shadow: 0px 5px 26px -5px rgba(0,0,0,0.14);
+    padding:0;
+    border-radius: 5px;
+
+
+}
+
+.container_each_user {
+
+    border-bottom: solid 1px #f5f5f5;
+    padding:1%;
+
+}
+
+.container_caract {
+    padding-left:0;
+    padding-right:0;
+background-color: #fafafa;
+    box-shadow: 0 1px 0px 0px rgba(0, 0, 0, 0), 0px -1px 11px 0px rgba(0, 0, 0, 0.19);
+
+}
+
+.structure_caract {
+
+    padding:1%;
+
+}
+
+.each_cat {
+
+    border-right:solid #f5f5f5 1px;
+
+}
+
+.each_row {
+
+    border-right: solid 1px #f5f5f5;
+
+}
+
+.button_admin_enable {
+
+    background-color: #ffe8d7;
+    font-size: 15px;
+    border: solid 1px #fdd9c9;
+    color: #3a1200;
+    padding: 6%;
+    border-radius: 5px;
+
+}
+
+.delete_button {
+    font-size:15px;
+    border: solid 1px #ffdcde;
+    color: #a94442;
+    background-color: #f2dede;
+    padding: 6%;
+    border-radius: 5px;
+
 
 }

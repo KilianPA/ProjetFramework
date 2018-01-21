@@ -8,6 +8,9 @@
                      <h2>Chargement..</h2>
                  </div>
 
+                 {#{{ dump(app.user.roles) }}#}
+
+
 
                  <div class="partie_menu">
                      <div class="container-fluid">
@@ -31,6 +34,15 @@
                                              <div class="menu_compte dropdown-menu dropdown-menu-right">
                                                  <ul class="text-center">
                                                      <li class="dropdown-item menu-li dropdown-item" href="#">Ma galerie</li>
+                                                     <a href="{{ path('admin') }}">
+                                                         <li class="dropdown-item menu-li dropdown-item">
+                                                             {% for roles in app.user.roles %}
+                                                                 {% if roles == "ROLE_ADMIN" %}
+                                                                     Panel Administrateur
+                                                                 {% endif %}
+                                                             {% endfor %}
+                                                         </li>
+                                                     </a>
                                                      <a  href="{{ path('fos_user_security_logout') }}"> <li class="dropdown-item menu-li dropdown-item">Se deconnecter</li></a>
                                                  </ul>
                                              </div>
@@ -185,8 +197,21 @@
                  </div>
              </div>
 
+                 <div class="modal fade" id="ShowErreurLoginModal">
+                     <div class="modal-dialog" role="document">
+                         <div class="modal-content alert-danger">
+                             <div class="modal-header alert-danger">
+
+                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                     <span aria-hidden="true">&times;</span>
+                                 </button>
+                                 <h4 class="erreur_login"></h4>
+                                 <h5 class="compteur_login"></h5>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
 
 
              {% endif %}
-
      {% endblock %}

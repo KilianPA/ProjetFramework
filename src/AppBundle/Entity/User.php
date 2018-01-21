@@ -8,8 +8,8 @@ use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
  * @ORM\Table(name="user_admin")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  */
 class User extends BaseUser
 {
@@ -19,6 +19,9 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+
+
 
 
 
@@ -42,6 +45,48 @@ class User extends BaseUser
      */
 
     private $photo;
+
+    /**
+     * @return bool
+     */
+    public function isEnabled()
+    {
+        return $this->enabled;
+    }
+
+    /**
+     * @param bool $enabled
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+    }
+
+    /**
+     * @return int
+     */
+    public function getLoginFail()
+    {
+        return $this->loginFail;
+    }
+
+    /**
+     * @param int $loginFail
+     */
+    public function setLoginFail($loginFail)
+    {
+        $this->loginFail = $loginFail;
+    }
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="loginFail", type="integer")
+     */
+
+    private $loginFail = 0;
+
 
 
     /**

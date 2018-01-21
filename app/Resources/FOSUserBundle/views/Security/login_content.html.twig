@@ -33,11 +33,11 @@
                 <div class="col-md-2 menu-input-col" >
                     <input type="submit" class="input_login_button alert alert-danger" id="element" name="_submit" value="{{ 'security.login.submit'|trans }}" data-trigger="focus" data-container="body" data-toggle="popover" data-placement="bottom" data-content="{{ error.messageKey|trans(error.messageData, 'security') }}" />
                 </div>
+                {% if compteur is defined %}
+                    <input class="compteur" type="hidden" data-content="{{ compteur }}">
+                {% endif %}
 
-                <script>
-                    console.log("tet")
-                    $('#element').popover('show')
-                </script>
+
             {% else %}
 
                 <div class="col-md-2 menu-input-col">

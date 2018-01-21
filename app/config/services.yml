@@ -15,6 +15,24 @@ services:
         tags:
             - { name: doctrine.event_listener, event: postPersist }
 
+    app.custom_auth_failure_handler:
+        class: AppBundle\Handler\AuthenticationFailureHandler
+        arguments:
+            - "@http_kernel"
+            - "@security.http_utils"
+
+
+
+
+#    authentication_failure_handler:
+#        class: AppBundle\Handler\AuthenticationFailureHandler
+#        arguments: ['@router', '@doctrine.orm.entity_manager'], ['@doctrine']
+
+#    app.security.authentication_event_listener:
+#        class: AppBundle\EventListener\LoginErrorListener
+#        tags:
+#            - { name: kernel.event_subscriber }
+
 #    app.user.register.mail:
 #        class: AppBundle\EventListener\MailRegistrationListener
 #        arguments:

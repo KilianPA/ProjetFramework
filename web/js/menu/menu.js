@@ -1,5 +1,52 @@
 $(document).ready(function () {
 
+
+
+
+
+
+    if (typeof $('.input_login_button').attr('data-content') == 'undefined'){
+
+
+    } else {
+
+        $('#ShowErreurLoginModal').modal('show');
+       $('.erreur_login').html($('.input_login_button').attr('data-content'));
+
+       var compteur =  $('.compteur').attr('data-content');
+    console.log(compteur);
+       if (!isNaN(compteur)) {
+
+           if (compteur == 2) {
+               $('.compteur_login').html( 'Dernier essai avant que votre compte soit désactivé');
+           }
+
+           else if (compteur == 4) {
+               $('.erreur_login').html("Le compte est désactivé.");
+           }
+           else if (compteur == 0) {
+
+           }
+
+           else {
+               compteur = 3 - compteur;
+               $('.compteur_login').html( 'Il vous reste ' + compteur + ' essai(s)');
+           }
+
+       } else {
+
+
+       }
+
+
+
+
+
+
+
+    }
+
+
     $(".show_photo_menu").click(function(){
         $('.container_loader').css('display', 'block');
         $.ajax({

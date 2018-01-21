@@ -3,10 +3,14 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Entity\User;
+use AppBundle\Repository\UserRepository;
+use Doctrine\ORM\Query\ResultSetMapping;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Security;
 
@@ -42,6 +46,67 @@ class SecurityController extends Controller
         // last username entered by the user
         $lastUsername = (null === $session) ? '' : $session->get($lastUsernameKey);
 
+        $user1 = $this->getDoctrine()
+            ->getRepository('AppBundle:User')
+            ->findOneBy(array('username' => $lastUsername ));
+
+        if (!$user1){
+
+
+        } else {
+            $compteur = $user1->getLoginFail();
+
+            if($user1->isEnabled()) {
+
+                $em = $this->getDoctrine()->getManager();
+
+                if ($compteur == 2) {
+
+                    $user = $this->getDoctrine()->getRepository(User::class)->find($user1->getId());
+                    $user->setLoginFail(0);
+                    $user->setEnabled(false);
+                    $em->flush();
+
+                    $csrfToken = $this->has('security.csrf.token_manager')
+                        ? $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue()
+                        : null;
+
+                    return $this->renderLogin(array(
+                        'last_username' => $lastUsername,
+                        'error' => $error,
+                        'compteur' => 4,
+                        'csrf_token' => $csrfToken,
+                    ));
+
+
+                } else {
+
+                    $compteur = $compteur + 1;
+
+                    $user = $this->getDoctrine()->getRepository(User::class)->find($user1->getId());
+                    $user->setLoginFail($compteur);
+                    $em->flush();
+
+                    $csrfToken = $this->has('security.csrf.token_manager')
+                        ? $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue()
+                        : null;
+
+                    return $this->renderLogin(array(
+                        'last_username' => $lastUsername,
+                        'error' => $error,
+                        'compteur' => $compteur,
+                        'csrf_token' => $csrfToken,
+                    ));
+
+                }
+
+            } else {
+
+
+            }
+
+        }
+
         $csrfToken = $this->has('security.csrf.token_manager')
             ? $this->get('security.csrf.token_manager')->getToken('authenticate')->getValue()
             : null;
@@ -51,6 +116,9 @@ class SecurityController extends Controller
             'error' => $error,
             'csrf_token' => $csrfToken,
         ));
+
+
+
     }
 
     /**

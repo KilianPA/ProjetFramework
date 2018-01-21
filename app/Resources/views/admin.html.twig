@@ -2,9 +2,21 @@
 
  {% block body %}
 
-     <h1>Page administrateur</h1>
+     {% include "menu.html.twig" %}
 
+     <div class="container_loader text-center">
+         <div class="loader"></div>
+         <h2>Chargement..</h2>
+     </div>
 
-     <p> <a href="{{ path('fos_user_security_logout') }}">Se deconnecter</a></p>
+     <div class="partie_administrateur">
+         <div class="container">
+             <div class="row">
+                 <div class="col-md-12 container_user_all">
+                     {{ render(url('adminindex')) }}
+                 </div>
+             </div>
+         </div>
+     </div>
 
  {% endblock %}
