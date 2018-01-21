@@ -12,7 +12,7 @@ class RegistrationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('captcha', 'Gregwar\CaptchaBundle\Type\CaptchaType');
-//        $builder->remove('plainPassword');
+        $builder->remove('plainPassword');
         //
 }
 

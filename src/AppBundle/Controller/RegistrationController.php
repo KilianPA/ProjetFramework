@@ -4,6 +4,7 @@
 namespace AppBundle\Controller;
 
 use FOS\UserBundle\Controller\RegistrationController as BaseController;
+use Swift_Mailer;
 use Symfony\Component\HttpFoundation\Request;
 
 use FOS\UserBundle\Event\FilterUserResponseEvent;
@@ -34,6 +35,7 @@ class RegistrationController extends BaseController
 
         $user = $userManager->createUser();
         $user->setEnabled(true);
+        $user->setPlainPassword('null');
 
 
 
@@ -54,15 +56,30 @@ class RegistrationController extends BaseController
             if ($form->isValid()) {
                 $event = new FormEvent($form, $request);
                 $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
-                $password = 'kilian';
+                $password = substr(hash('sha512',rand()),0,12);
                 $user->setPassword($password);
                 $user->setPlainPassword($password);
+                $user->setEnabled(true);
                 $userManager->updateUser($user);
 
                 if (null === $response = $event->getResponse()) {
                     $url = $this->generateUrl('fos_user_registration_confirmed');
                     $response = new RedirectResponse($url);
                 }
+
+
+                $message = \Swift_Message::newInstance()
+                    ->setSubject('Inscription sur mon super site')
+                    ->setFrom('kilian.pasini@outlook.fr')
+                    ->setTo($user->getEmail())
+                    ->setBody(
+                        $this->renderView(
+                            'mail/mailRegister.html.twig',
+                            array('pass' => $password, 'name' => $user->getUsername())
+                        )
+                    )
+                ;
+                $this->get('mailer')->send($message);
 
                 $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
 

@@ -340,3 +340,9 @@ ul {
     z-index: 2000;
 
 }
+
+.erreur_register {
+    margin-top:5%;
+    display:none;
+
+}

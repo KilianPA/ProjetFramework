@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-
+    console.log("test");
 
 
 
@@ -257,6 +257,10 @@ $(document).ready(function () {
     });
 
     $('.fos_user_registration_form').submit(function(event) {
+        $('.container_loader').css('display', 'block');
+        $('.erreur_login').removeClass('alert-success');
+        $('.erreur_login').removeClass('alert-danger');
+        $('.erreur_login').html('');
         event.preventDefault();
         var formData = $('.fos_user_registration_form').serialize();
 
@@ -266,7 +270,29 @@ $(document).ready(function () {
             data: new FormData($('.fos_user_registration_form')[0]),
             processData: false,  contentType: false,  cache: false,
             success: function (response) {
-                console.log(response);
+                $('.erreur_register').css('display', 'block');
+                var str = response;
+
+                var res = str.replace(new RegExp('ERROR:', 'gi'), '');
+                var res = res.replace(new RegExp('email:', 'gi'), '');
+                var res = res.replace(new RegExp('username:', 'gi'), '');
+                var res = res.replace(new RegExp('captcha:', 'gi'), '');
+
+                if (str.indexOf("L'utilisateur a été créé avec succès") !=-1) {
+
+                    $('.erreur_register').addClass('alert-success');
+                    $('.erreur_register_h ').html(res);
+                    $('.container_loader').css('display', 'none');
+
+                } else {
+
+                    $('.erreur_register').addClass('alert-danger');
+                    $('.erreur_register_h ').html(res);
+                    $('.container_loader').css('display', 'none');
+
+                }
+
+
             }
         });
 

@@ -29,8 +29,3 @@ monolog:
         #chromephp:
         #    type:   chromephp
         #    level:  info
-
-swiftmailer:
-    transport: gmail
-    username:  kilian.pasini@gmail.com
-    password:  kodo0022

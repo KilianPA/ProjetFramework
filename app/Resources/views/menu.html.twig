@@ -1,4 +1,3 @@
-{#{% extends "base.html.twig" %}#}
 
      {% block body %}
              {% if is_granted('IS_AUTHENTICATED_FULLY') %}
@@ -34,15 +33,15 @@
                                              <div class="menu_compte dropdown-menu dropdown-menu-right">
                                                  <ul class="text-center">
                                                      <li class="dropdown-item menu-li dropdown-item" href="#">Ma galerie</li>
-                                                     <a href="{{ path('admin') }}">
-                                                         <li class="dropdown-item menu-li dropdown-item">
                                                              {% for roles in app.user.roles %}
                                                                  {% if roles == "ROLE_ADMIN" %}
-                                                                     Panel Administrateur
+                                                                     <a href="{{ path('admin') }}">
+                                                                         <li class="dropdown-item menu-li dropdown-item">
+                                                                                     Panel Administrateur
+                                                                         </li>
+                                                                     </a>
                                                                  {% endif %}
                                                              {% endfor %}
-                                                         </li>
-                                                     </a>
                                                      <a  href="{{ path('fos_user_security_logout') }}"> <li class="dropdown-item menu-li dropdown-item">Se deconnecter</li></a>
                                                  </ul>
                                              </div>
@@ -150,6 +149,11 @@
 
              {% else %}
 
+                 <div class="container_loader text-center">
+                     <div class="loader"></div>
+                     <h2>Chargement..</h2>
+                 </div>
+
                  <div class="partie_menu">
                      <div class="container-fluid">
                          <div class="row">
@@ -159,8 +163,6 @@
                                  </div>
                                  <div class="col-md-6 text-right">
                                      <div class="col-md-9">
-
-                                         {#{% render "FOSUserBundle:Security:LoginBis" %}#}
                                          {{ render(controller('AppBundle:Security:login')) }}
                                      </div>
                                      <div class="col-md-3">
