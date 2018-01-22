@@ -18,34 +18,38 @@
 </div>
 
     {% for user in users %}
-        <div class="col-md-12 container_each_user">
-                <div class="col-md-2 each_row">
-                    <h4> {{ user.username }} </h4>
-                </div>
-                <div class="col-md-2 each_row">
-                    <h4> {{ user.email }} </h4>
-                </div>
-                <div class="col-md-2 each_row">
-                  <h4>{{ user.lastLogin|date("d/m/Y") }} </h4>
-                </div>
-                <div class="col-md-2 each_row">
-                    {% if user.enabled == true %}
-                        <h4> Compte Activé</h4>
-                    {% else %}
-                        <h4>Compte Désactivé </h4>
-                    {% endif %}
-                </div>
-                <div class="col-md-2 each_row">
-                    <button class="button_admin_enable" idAccount="{{ user.id }}">
-                        {% if user.enabled == true %}
-                            Désactivé le compte
-                        {% else %}
-                                    Activé le compte
-                        {% endif %} </button>
-                </div>
-                <div class="col-md-2 each_row">
-                    <button class="delete_button" idAccount="{{ user.id }}"> Supprimer le compte </button>
-                </div>
 
-        </div>
+        {% if user.id == '1' %}
+
+        {% else  %}
+            <div class="col-md-12 container_each_user">
+                    <div class="col-md-2 each_row">
+                        <h4> {{ user.username }} </h4>
+                    </div>
+                    <div class="col-md-2 each_row">
+                        <h4> {{ user.email }} </h4>
+                    </div>
+                    <div class="col-md-2 each_row">
+                      <h4>{{ user.lastLogin|date("d/m/Y") }} </h4>
+                    </div>
+                    <div class="col-md-2 each_row">
+                        {% if user.enabled == true %}
+                            <h4> Compte Activé</h4>
+                        {% else %}
+                            <h4>Compte Désactivé </h4>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-2 each_row">
+                        <button class="button_admin_enable" idAccount="{{ user.id }}">
+                            {% if user.enabled == true %}
+                                Désactivé le compte
+                            {% else %}
+                                        Activé le compte
+                            {% endif %} </button>
+                    </div>
+                    <div class="col-md-2 each_row">
+                        <button class="delete_button" idAccount="{{ user.id }}"> Supprimer le compte </button>
+                    </div>
+            </div>
+        {% endif %}
     {% endfor %}

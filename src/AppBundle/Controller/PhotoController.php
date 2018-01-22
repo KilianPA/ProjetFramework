@@ -33,7 +33,7 @@ class PhotoController extends Controller
 //        On recupère le formulaire
 
         $form = $this->createForm(PhotoType::class, $photo);
-        $galerie = $this->getDoctrine()->getRepository("AppBundle:Galerie")->find(0);
+        $galerie = $this->getDoctrine()->getRepository("AppBundle:Galerie")->find(1);
 
         $form->handleRequest($request);
 
@@ -77,7 +77,7 @@ class PhotoController extends Controller
     public function showPhotoAction () {
 
         $user = $this->getUser();
-        $photo = $this->getDoctrine()->getRepository("AppBundle:Photo")->findBy(array('photoUser' => $user, 'galerie' => array(0,null) ));
+        $photo = $this->getDoctrine()->getRepository("AppBundle:Photo")->findBy(array('photoUser' => $user, 'galerie' => array(1,null) ));
 
         if (!$photo) {
             return new Response('Aucune photo');
@@ -115,7 +115,7 @@ class PhotoController extends Controller
             $idPhoto = $request->request->get('id_photo');
             $em = $this->getDoctrine()->getManager();
 
-            $galerie = $this->getDoctrine()->getRepository("AppBundle:Galerie")->find(0);
+            $galerie = $this->getDoctrine()->getRepository("AppBundle:Galerie")->find(1);
 
             $photo = $this->getDoctrine()->getRepository("AppBundle:Photo")->find($idPhoto);
             $photo->setGalerie($galerie);

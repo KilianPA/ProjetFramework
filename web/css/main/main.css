@@ -62,10 +62,19 @@ body {
 }
 
 .image_photo_home {
-
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:10%;
     width: 80%;
     border-radius: 5px;
     box-shadow: 3px 3px 8px 0px rgba(58, 58, 58, 0.12);
+
+}
+
+.name_photo {
+
+    color: #ea702e;
 
 }
 

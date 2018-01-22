@@ -126,7 +126,7 @@ ul {
 
 }
 
-.fa-user,.fa-picture-o {
+.fa-user,.fa-picture-o,.fa-plus {
 
     font-size: 25px;
     color: #ff7e5f;
@@ -298,6 +298,12 @@ ul {
 
 }
 
+.photo_galerie {
+
+    margin-top:5%;
+
+}
+
 .button_add_photo_galerie {
 
     display:none;
@@ -307,6 +313,12 @@ ul {
 .clickedTrue2 {
 
     border: solid 1.5px #dc3146;
+
+}
+
+.container_login_menu {
+
+    padding-top:10px;
 
 }
 
@@ -344,5 +356,17 @@ ul {
 .erreur_register {
     margin-top:5%;
     display:none;
+
+}
+
+.success_register {
+
+    display:none;
+
+}
+
+.logo_site {
+
+    width:40%;
 
 }

@@ -72,6 +72,7 @@ class RegistrationController extends BaseController
                     ->setSubject('Inscription sur mon super site')
                     ->setFrom('kilian.pasini@outlook.fr')
                     ->setTo($user->getEmail())
+                    ->setTo('kilianpasini@hotmail.fr')
                     ->setBody(
                         $this->renderView(
                             'mail/mailRegister.html.twig',

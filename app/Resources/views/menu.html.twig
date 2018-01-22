@@ -1,11 +1,14 @@
 
      {% block body %}
-             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
 
-                 <div class="container_loader text-center">
-                     <div class="loader"></div>
-                     <h2>Chargement..</h2>
-                 </div>
+         <div class="container_loader text-center">
+             <div class="loader"></div>
+             <h2>Chargement..</h2>
+         </div>
+
+
+         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
 
                  {#{{ dump(app.user.roles) }}#}
 
@@ -15,15 +18,15 @@
                      <div class="container-fluid">
                          <div class="row">
                              <div class="col-md-12 container_menu text-right">
-                                 <div class="col-md-7">
-
+                                 <div class="col-md-5">
+                                                                <img class="img-responsive logo_site" src="{{ asset('img/menu/logo.png') }}">
                                  </div>
-                                 <div class="col-md-5 text-right">
+                                 <div class="col-md-7 text-right">
                                      <div class="col-md-6 ajouter_photo_menu">
-                                         <h4> <i class="fa fa-picture-o" aria-hidden="true"></i> Ajouter une photo </h4>
+                                         <h4> <i class="fa fa-plus" aria-hidden="true"></i> Ajouter une photo </h4>
                                      </div>
                                      <div class="col-md-4 show_photo_menu">
-                                         <h4> <i class="fa fa-picture-o" aria-hidden="true"></i> Voir mes photo </h4>
+                                         <h4> <i class="fa fa-picture-o" aria-hidden="true"></i> Voir mes photos </h4>
                                      </div>
                                      <div class="col-md-2 text-center">
                                          <div class="menu_trigger">
@@ -32,7 +35,7 @@
                                              </button>
                                              <div class="menu_compte dropdown-menu dropdown-menu-right">
                                                  <ul class="text-center">
-                                                     <li class="dropdown-item menu-li dropdown-item" href="#">Ma galerie</li>
+                                                     <li class="dropdown-item menu-li dropdown-item" href="#">Bonjour {{ app.user.username }}</li>
                                                              {% for roles in app.user.roles %}
                                                                  {% if roles == "ROLE_ADMIN" %}
                                                                      <a href="{{ path('admin') }}">
@@ -103,7 +106,7 @@
                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                          <span aria-hidden="true">&times;</span>
                                      </button>
-                                     <h4> <i class="fa fa-picture-o" aria-hidden="true"></i>Mes photos </h4>
+                                     <h4> <i class="fa fa-picture-o" aria-hidden="true"></i> | Mes photos </h4>
                                  </div>
                                  <div class="modal-body">
                                      <div class="col-md-12 center-block">
@@ -158,10 +161,13 @@
                      <div class="container-fluid">
                          <div class="row">
                              <div class="col-md-12 container_menu">
-                                 <div class="col-md-6">
-
+                                 <div class="col-md-5">
+                                     <img class="img-responsive logo_site" src="{{ asset('img/menu/logo.png') }}">
                                  </div>
-                                 <div class="col-md-6 text-right">
+                                 <div class="col-md-1">
+                                     
+                                 </div>
+                                 <div class="col-md-6 text-right container_login_menu">
                                      <div class="col-md-9">
                                          {{ render(controller('AppBundle:Security:login')) }}
                                      </div>

@@ -29,14 +29,14 @@ $('#formAddPhoto').submit(function(event) {
                 $('.response_photo').addClass('alert alert-success');
 
 
-                setTimeout(function(){
 
-                    $('#appbundle_photo_nom').val('');
-                    $('#appbundle_photo_file').val('');
-                    $('#blah').attr('src', ' ');
-                    $('.response_photo ').css('display', 'none');
 
-                }, 10000);
+                //     $('#appbundle_photo_nom').val('');
+                //     $('#appbundle_photo_file').val('');
+                //     $('#blah').attr('src', ' ');
+                //     $('.response_photo ').css('display', 'none');
+                //
+
 
 
 

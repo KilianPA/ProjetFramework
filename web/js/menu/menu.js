@@ -278,11 +278,13 @@ $(document).ready(function () {
                 var res = res.replace(new RegExp('username:', 'gi'), '');
                 var res = res.replace(new RegExp('captcha:', 'gi'), '');
 
-                if (str.indexOf("L'utilisateur a été créé avec succès") !=-1) {
+                if (res.includes("L'utilisateur a été créé avec succès") > -1) {
 
-                    $('.erreur_register').addClass('alert-success');
-                    $('.erreur_register_h ').html(res);
+                    $('.success_register').css('display', 'block');
+                    $('.success_register_h').html(res);
                     $('.container_loader').css('display', 'none');
+
+
 
                 } else {
 

@@ -11,6 +11,15 @@
                 <div class="col-md-12 photo_grid_each">
                     <i class="fa fa-times-circle delete_click_photo" aria-hidden="true" photoid="{{ photo.id }}"></i>
                     <img src="uploads/photo/{{ photo.path }}" class="img-responsive image_photo_grid">
+
+                    <div class="col-md-12 photo_caracteristique">
+                        <div class="col-md-12">
+                            <h5>Ajouté le {{ photo.dateUpload|date("m/d/Y") }} </h5>
+                        </div>
+                        <div class="col-md-12">
+                            <h5> {{ (photo.fileSize / 1024)|number_format  }} Ko </h5>
+                        </div>
+                    </div>
                 </div>
             </div>
 

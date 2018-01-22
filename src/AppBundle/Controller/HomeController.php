@@ -43,7 +43,7 @@ class HomeController extends Controller
         {
             $id = $galerie->getId();
 
-            if ($id == 0){
+            if ($id == 1){
 
             } else {
 

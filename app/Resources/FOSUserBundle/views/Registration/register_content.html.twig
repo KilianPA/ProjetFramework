@@ -5,6 +5,7 @@
 
 <div class="col-md-12"> {{ form_row(form.username, {'attr': {'class': 'form-control'}} ) }} </div>
 <div class="col-md-12"> {{ form_row(form.email, {'attr': {'class': 'form-control'}} ) }} </div>
+<div class="col-md-12"> {{ form_row(form.age, {'attr': {'class': 'form-control'}} ) }} </div>
 {#<div class="col-md-12"> {{ form_row(form.plainPassword.first, {'attr': {'class': 'form-control'}} ) }} </div>#}
 {#<div class="col-md-12"> {{ form_row(form.plainPassword.second, {'attr': {'class': 'form-control'}} ) }} </div>#}
 <div class="col-md-12"> {{ form_row(form.captcha ) }} </div>
@@ -14,5 +15,9 @@
 
 <div class="col-md-12 erreur_register">
     <h4 class="erreur_register_h"> </h4>
+</div>
+
+<div class="col-md-12 success_register alert-success">
+    <h4 class="success_register_h"> </h4>
 </div>
 

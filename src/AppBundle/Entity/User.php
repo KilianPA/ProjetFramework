@@ -87,6 +87,30 @@ class User extends BaseUser
 
     private $loginFail = 0;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="age", type="integer")
+     */
+
+    private $age;
+
+    /**
+     * @return string
+     */
+    public function getAge()
+    {
+        return $this->age;
+    }
+
+    /**
+     * @param string $age
+     */
+    public function setAge($age)
+    {
+        $this->age = $age;
+    }
+
 
 
     /**

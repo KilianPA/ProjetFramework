@@ -85,7 +85,7 @@ class Photo
     }
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Galerie", inversedBy="photo" , cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Galerie", inversedBy="photo")
      * @ORM\JoinColumn(nullable=true)
      * @Assert\Valid()
      * @Assert\Type("AppBundle\Entity\Galerie")
